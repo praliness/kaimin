@@ -1,6 +1,6 @@
 package jp.tsuda;
 
-import javax.jdo.*
+import javax.jdo.*;
 
 public class PMF {
 	 

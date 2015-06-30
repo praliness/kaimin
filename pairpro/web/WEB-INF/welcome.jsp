@@ -16,8 +16,7 @@
         <h1>快眠屋へようこそ！</h1>
         <img src="merry.jpg"><br>
         <tr>
-            <td><a href="/ad4549/LoginServlet">ログイン</a><br></td>
-            <td><a href="/ad4549/UserRegister">ユーザー登録</td>
+            <td><a href="login">ログイン</a><br></td>
         </tr>
     </body>
     </center>
