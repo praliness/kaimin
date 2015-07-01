@@ -1,9 +1,31 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>快眠屋</title>
+        <script type="text/javascript" src="lib.js"></script>
+        <script type="text/javascript">
+        <!--
+        function callback(request){
+            var json = eval(request.responseText);
+            var res = '';
+            if (json.length == 1){
+                res += '<tr><td>' + json[0].food +'</td></tr>';
+                res += '<tr><td>' + json[0].price +'円</td></tr>';
+                res += '<img src ="'+json[0].img+'"width="280" height="420">'; 
+            } else {
+                for (var i = 0;i < json.length;i++){
+                	res += '<tr><td><a href="javascript:return false;" onclick="getData(' + json[i].id +');">' +i + '</a></td>';
+                    res += '<td>' + json[i].user + '</td>';
+                    res += '<td>' + json[i].mes + '円</td></tr>';
+                 }
+            }
+            var obj = document.getElementById("datatable");
+            obj.innerHTML = res;
+        }
+       
+     //-->
+  </script>
     </head>
     <body background="haikei1.gif">
         <h1>レビューページ</h1>        
@@ -14,10 +36,10 @@
         布団の種類<br>
         bed　タオルケット<img src="bed1.jpg" width="320" height="213">
         bed2　     羽毛<img src="bed2.jpg" width="320" height="213"><br></p>
-         <a href="/ad4549/Logout">ログアウト</a>
+         <a href="/logout">ログアウト</a>
         </p>
-        <p><a href="/ad4549/Main">更新</a></p>
-        <form action="/ad4549/Main" method="post">
+        <p><a href="/main">更新</a></p>
+        <form action="/main" method="post">
             <input type="text" name="text">
             <input type="submit" value="つぶやく">
         </form>

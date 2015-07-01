@@ -6,15 +6,18 @@ package jp.tsuda;
 
 import java.io.IOException;
 
-import javax.jdo.PersistenceManager;
-import javax.jdo.PersistenceManagerFactory;
+
 import javax.servlet.ServletException;
+//import javax.jdo.PersistenceManager;
+//import javax.jdo.PersistenceManagerFactory;
+//import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import jp.tsuda.Login;
-import jp.tsuda.PMF;
+//import jp.tsuda.Login;
+//import jp.tsuda.PMF;
+
 
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
@@ -43,6 +46,14 @@ public class LoginServlet extends HttpServlet {
 	                                     "\">sign in</a>.</p>");
 	        }
 	    }
+	 
+//	 @Override
+//	    protected void doPost(HttpServletRequest req,
+//	            HttpServletResponse resp)
+//	            throws ServletException, IOException {
+
+//	        resp.sendRedirect("/main.html");
+//	    }
 }
 	 
 
