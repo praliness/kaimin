@@ -3,58 +3,43 @@
  * and open the template in the editor.
  */
 package jp.tsuda;
-
+ 
 import java.io.IOException;
+import java.security.Principal;
+ 
+import javax.servlet.*;
+import javax.servlet.http.*;
+ 
+import com.google.appengine.api.users.*;
 
 
-import javax.servlet.ServletException;
-//import javax.jdo.PersistenceManager;
-//import javax.jdo.PersistenceManagerFactory;
-//import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+public class LoginServlet  implements Filter {
+    
+   @Override
+   public void init(FilterConfig conf) throws ServletException {}
 
-//import jp.tsuda.Login;
-//import jp.tsuda.PMF;
+   @Override
+   public void doFilter(ServletRequest req,
+           ServletResponse resp, FilterChain chain)
+           throws IOException, ServletException {
+       UserService service = UserServiceFactory.getUserService();
+       HttpServletRequest request = (HttpServletRequest)req;
+       HttpServletResponse response = (HttpServletResponse)resp;
+       HttpSession session = request.getSession();
+       if (service.isUserLoggedIn()){
+           session.setAttribute("user", service.getCurrentUser());
+       } else {
+           session.removeAttribute("user");
+           String url = request.getRequestURI();
+           String loginurl = service.createLoginURL(url);
+           response.sendRedirect(loginurl);
+       }
+       chain.doFilter(request, response);
+   }
+    
+   @Override
+   public void destroy() {}
 
-
-import com.google.appengine.api.users.UserService;
-import com.google.appengine.api.users.UserServiceFactory;
-
-
-@SuppressWarnings("serial")
-public class LoginServlet extends HttpServlet {
-
-	 @Override
-	    public void doGet(HttpServletRequest req, HttpServletResponse resp)
-	            throws IOException {
-	        UserService userService = UserServiceFactory.getUserService();
-
-	        String thisURL = req.getRequestURI();
-
-	        resp.setContentType("text/html");
-	        if (req.getUserPrincipal() != null) {
-	            resp.getWriter().println("<p>Hello, " +
-	                                     req.getUserPrincipal().getName() +
-	                                     "!  You can <a href=\"" +
-	                                     userService.createLogoutURL(thisURL) +
-	                                     "\">sign out</a>.</p>");
-	        } else {
-	            resp.getWriter().println("<p>Please <a href=\"" +
-	                                     userService.createLoginURL(thisURL) +
-	                                     "\">sign in</a>.</p>");
-	        }
-	    }
-	 
-//	 @Override
-//	    protected void doPost(HttpServletRequest req,
-//	            HttpServletResponse resp)
-//	            throws ServletException, IOException {
-
-//	        resp.sendRedirect("/main.html");
-//	    }
 }
-	 
 
 	

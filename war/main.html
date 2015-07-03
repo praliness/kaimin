@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html> 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>快眠屋</title>
@@ -10,14 +10,13 @@
             var json = eval(request.responseText);
             var res = '';
             if (json.length == 1){
-                res += '<tr><td>' + json[0].food +'</td></tr>';
-                res += '<tr><td>' + json[0].price +'円</td></tr>';
-                res += '<img src ="'+json[0].img+'"width="280" height="420">'; 
+                res += '<tr><td>' + json[0].userId +'</td></tr>';
+                res += '<tr><td>' + json[0].item +'</td></tr>'; 
             } else {
                 for (var i = 0;i < json.length;i++){
                 	res += '<tr><td><a href="javascript:return false;" onclick="getData(' + json[i].id +');">' +i + '</a></td>';
-                    res += '<td>' + json[i].user + '</td>';
-                    res += '<td>' + json[i].mes + '円</td></tr>';
+                    res += '<td>' + json[i].userId + '</td>';
+                    res += '<td>' + json[i].review +'</td></tr>';
                  }
             }
             var obj = document.getElementById("datatable");
