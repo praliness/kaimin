@@ -4,17 +4,25 @@
 		xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 		http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+
+ <servlet>
+		<servlet-name>Welcome</servlet-name>
+		<servlet-class>jp.tsuda.WelcomeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Welcome</servlet-name>
+		<url-pattern>/welcome</url-pattern>
+	</servlet-mapping>	
 	
 	
-	<sessions-enabled>true</sessions-enabled>
 	
 	<filter>
-    <filter-name>logincheck</filter-name>
-    <filter-class>jp.tsuda.LoginCheckFilter</filter-class>
+    <filter-name>login</filter-name>
+    <filter-class>jp.tsuda.LoginServlet</filter-class>
 </filter>
 <filter-mapping>
-    <filter-name>logincheck</filter-name>
-    <url-pattern>/private.jsp</url-pattern>
+    <filter-name>login</filter-name>
+    <url-pattern>/login.jsp</url-pattern>
 </filter-mapping>    
 		
 	<servlet>
