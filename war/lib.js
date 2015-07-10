@@ -22,8 +22,8 @@ function getData(id){
         alert("HttpRequestが取得できませんでした。");
         return;
     }
-    var uri = "/mygae";
-    if (id != null) uri = "/mygae?id=" + id;
+    var uri = "/main.jsp";
+    if (id != null) uri = "/main.jsp?id=" + id;
     request.open("GET",uri,true);
     request.setRequestHeader("User-Agent","XMLHttpRequest");
     request.onreadystatechange = function(){

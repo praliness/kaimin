@@ -24,7 +24,7 @@
     <filter-name>login</filter-name>
     <url-pattern>/login.jsp</url-pattern>
 </filter-mapping>    
-		
+
 	<servlet>
     <servlet-name>logout</servlet-name>
     <servlet-class>jp.tsuda.LogoutServlet</servlet-class>
@@ -33,7 +33,8 @@
     <servlet-name>logout</servlet-name>
     <url-pattern>/logout</url-pattern>
 </servlet-mapping>
-	
+
+
 	<welcome-file-list>
 		<welcome-file>welcome.html</welcome-file>
 	</welcome-file-list>
